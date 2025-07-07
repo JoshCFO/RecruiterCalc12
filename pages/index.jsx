@@ -1,6 +1,5 @@
 'use client';
 import { useState, useRef, useEffect } from "react";
-import html2pdf from "html2pdf.js";
 
 const gsaData = {
   "Dallas, TX": { housing: 910, meals: 430 },
