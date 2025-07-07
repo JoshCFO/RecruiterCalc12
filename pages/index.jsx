@@ -51,12 +51,13 @@ export default function RecruiterMarginCalc() {
   const weeklyTotalWithBonus = totalWeekly + (bonus + travel) / weeksPerYear;
   const annualIncome = weeklyTotalWithBonus * weeksPerYear;
 
-  const handleDownloadPDF = () => {
-    if (resultRef.current) {
-      html2pdf()
-        .from(resultRef.current)
-        .set({ margin: 0.5, filename: 'Recruiter_Margin_Calc.pdf', html2canvas: { scale: 2 } })
-        .save();
+  const handleDownloadPDF = async () => {
+  if (resultRef.current) {
+    const html2pdf = (await import("html2pdf.js")).default;
+    html2pdf()
+      .from(resultRef.current)
+      .set({ margin: 0.5, filename: 'Recruiter_Margin_Calc.pdf', html2canvas: { scale: 2 } })
+      .save();
     }
   };
 
